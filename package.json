@@ -1,8 +1,8 @@
 {
 	"name": "time-task-app",
-	"version": "0.0.1",
-	"author": "Ionic Framework",
-	"homepage": "https://ionicframework.com/",
+	"version": "0.1.0",
+	"author": "Luiz F Souza (f3rn-luiz)",
+	"homepage": "https://github.com/f3rn-luiz || https://github.com/f3rn-luiz/time-task-app",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
