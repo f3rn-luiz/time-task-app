@@ -1,7 +1,7 @@
 {
-  "name": "time-task-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
+	"name": "time-task-app",
+	"integrations": {
+		"capacitor": {}
+	},
+	"type": "angular-standalone"
 }
