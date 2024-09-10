@@ -4,6 +4,27 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 
 ---
 
+### 08/09/2024
+
+-   Formatação do projeto
+-   Atualização dos documentos definitivos com caracteristicas autorias e informativas
+-   Implementação do framework CSS Tailwind e suas configurações, afim de melhorar e optimizar os estilos
+
+<br>
+
+### 07/09/2024
+
+-   Criação da base do aplicativo (Ionic)
+-   Implementação e configuração da tecnologia de formatação do projeto (Prettier), para manter a coesão e padronização do mesmo
+
+<br>
+
+### 05/09/2024
+
+-   Atualização das documentações do projeto
+
+<br>
+
 ### 04/09/2024
 
 -   Criação do repositório do projeto no GitHub
@@ -23,14 +44,13 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 ### 01/09/2024
 
 -   Início do projeto
-
 -   Enquete na comunidade:
 
-    -   _Pergunta_: Escolham o nome do nosso APP:
-    -   _Escolha_: 40% [2 / 5] - Time&Task (Decidido como nome provisório por inconsistência e pela decisão da próxima enquete)
+    -   **Pergunta**: Escolham o nome do nosso APP:
+    -   **Escolha**: 40% [2 / 5] - Time&Task (Decidido como nome provisório por inconsistência e pela decisão da próxima enquete)
 
-    -   _Pergunta_: Decidir agora o nome do projeto ou esperar ganhar forma primeiro?
-    -   _Escolha_: 80% [4 / 5] - Depois
+    -   **Pergunta**: Decidir agora o nome do projeto ou esperar ganhar forma primeiro?
+    -   **Escolha**: 80% [4 / 5] - Depois
 
 <br>
 
