@@ -4,6 +4,12 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 
 ---
 
+### 12/09/2024
+
+-   Criação da base do modelo de dados para o aplicativo (Conta / Tarefas)
+
+<br>
+
 ### 11/09/2024
 
 -   Atualização das dependências do projeto
