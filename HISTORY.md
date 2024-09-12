@@ -4,6 +4,24 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 
 ---
 
+### 11/09/2024
+
+-   Atualização das dependências do projeto
+-   Configuração do Index do projeto
+-   Integração do Prettier Organize Imports para melhorar a padronização
+-   Formatação completa do projeto
+
+<br>
+
+### 10/09/2024
+
+-   Enquete na comunidade:
+
+    -   **Pergunta**: Mandar atualização do HISTORY na comunidade?
+    -   **Escolha**: 60% [3 / 5] - Manda aqui também
+
+<br>
+
 ### 08/09/2024
 
 -   Formatação do projeto
