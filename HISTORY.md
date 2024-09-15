@@ -4,6 +4,26 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 
 ---
 
+### 15/09/2024
+
+-   Separação dos arquivos do projeto Ionic da pasta principal do projeto (Movido para a nova pasta "app")
+-   Separação dos arquivos técnicos do projeto como modelagem e design (Movido para a nova pasta "docs")
+-   Modificação nos títulos de arquivos técnicos da pasta docs para melhor visualização de sua finalidade
+
+<br>
+
+### 14/09/2024
+
+-   Criação do arquivo UIUX no Adobe XD para o design prévio do app
+
+<br>
+
+### 13/09/2024
+
+-   Continuação da modelagem de dados para o aplicativo (Base Tempo / Cronograma)
+
+<br>
+
 ### 12/09/2024
 
 -   Criação da base do modelo de dados para o aplicativo (Conta / Tarefas)
