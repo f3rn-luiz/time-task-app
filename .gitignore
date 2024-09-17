@@ -1,73 +1,73 @@
 # Specifies intentionally untracked files to ignore when using Git
 # http://git-scm.com/docs/gitignore
 
-*~
-*.sw[mnpcod]
-.tmp
-*.tmp
-*.tmp.*
-UserInterfaceState.xcuserstate
-$RECYCLE.BIN/
+/app/*~
+/app/*.sw[mnpcod]
+/app/.tmp
+/app/*.tmp
+/app/*.tmp.*
+/app/UserInterfaceState.xcuserstate
+/app/$RECYCLE.BIN/
 
-*.log
-log.txt
+/app/*.log
+/app/log.txt
 
 
-/.sourcemaps
-/.versions
-/coverage
+/app/.sourcemaps
+/app/.versions
+/app/coverage
 
 # Ionic
-/.ionic
-/www
-/platforms
-/plugins
+/app/.ionic
+/app/www
+/app/platforms
+/app/plugins
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/app/dist
+/app/tmp
+/app/out-tsc
+/app/bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/app/node_modules
+/app/npm-debug.log
+/app/yarn-error.log
 
 # IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-project
-*.sublime-workspace
+/app/.idea/
+/app/.project
+/app/.classpath
+/app/.c9/
+/app/*.launch
+/app/.settings/
+/app/*.sublime-project
+/app/*.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+/app/.vscode/*
+/app/!.vscode/settings.json
+/app/!.vscode/tasks.json
+/app/!.vscode/launch.json
+/app/!.vscode/extensions.json
+/app/.history/*
 
 
 # Miscellaneous
-/.angular
-/.angular/cache
-.sass-cache/
-/.nx
-/.nx/cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+/app/.angular
+/app/.angular/cache
+/app/.sass-cache/
+/app/.nx
+/app/.nx/cache
+/app/connect.lock
+/app/coverage
+/app/libpeerconnection.log
+/app/testem.log
+/app/typings
 
 # System files
-.DS_Store
-Thumbs.db
+/app/.DS_Store
+/app/Thumbs.db
 
 # Outros arquivos
-MODEL.mwb.bak
+/docs/DB MODEL.mwb.bak
