@@ -4,6 +4,49 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 
 ---
 
+### 15/10/2024
+
+-   Atualização interna de compilação a fim de um melhor desempenho
+-   Implementação dos icones do Material Design no projeto
+-   Limpeza e organização do projeto, mudanças de nome e posição para uma melhor padronização
+
+<br>
+
+### 27/09/2024
+
+-   Enquete na comunidade:
+
+    -   **Pergunta**: Deixar o menu mais didático?
+    -   **Escolha**: 85.7% [6 / 7] - Com texto
+
+    -   **Pergunta**: Qual o modelo de icones do app? (Escolha redundante)
+    -   **Escolha**: 71.4% [5 / 7] - [Material + Ambos] -> portanto Ambos
+
+<br>
+
+### 23/09/2024
+
+-   Enquete na comunidade:
+
+    -   **Pergunta**: Qual o tipo de menu do app:
+    -   **Escolha**: 100% [7 / 7] - Menu Inferior
+
+<br>
+
+### 22/09/2024
+
+-   Organização do projeto, remoção de arquivos e chamadas não utilizadas
+-   Melhoria e pré definição do menu do aplicativo
+-   Importação dos icones do Ionic para o projeto
+
+<br>
+
+### 17/09/2024
+
+-   Correções internas do Git do projeto
+
+<br>
+
 ### 15/09/2024
 
 -   Separação dos arquivos do projeto Ionic da pasta principal do projeto (Movido para a nova pasta "app")
