@@ -4,6 +4,14 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 
 ---
 
+### 23/10/2024
+
+-   Atualização das dependências e tecnlogias do projeto
+-   Reorganização do projeto
+-   Páginas do Menu e rota do aplicativo já funcionais (Calendário, Cronograma, Tarefas, Configuração)
+
+<br>
+
 ### 15/10/2024
 
 -   Atualização interna de compilação a fim de um melhor desempenho
