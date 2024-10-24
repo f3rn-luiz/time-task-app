@@ -4,4 +4,12 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+	<div class="flex h-full w-full flex-col items-center justify-center">
+		<ng-container *ngFor="let semana of mes">
+			<div class="flex h-full w-full items-center justify-center">
+				<div *ngFor="let dia of semana" class="h-full flex-1 border border-white">{{ dia }}</div>
+			</div>
+		</ng-container>
+	</div>
+</ion-content>
