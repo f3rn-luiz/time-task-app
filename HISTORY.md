@@ -4,6 +4,17 @@ Um histórico objetivo das atualizações e decisões relacionadas ao projeto, p
 
 ---
 
+### 24/10/2024
+
+-   Definição dos padrões (moeda, data, ...) para o pt-BR
+-   Criação inicial das funções para montagem do calendário do mês atual
+-   Enquete na comunidade (nem todos responderam):
+
+    -   **Pergunta**: Mudar ou manter os ícones:
+    -   **Escolha**: 42.8% [3 / 7] - Estão todos legais, não mudar
+
+<br>
+
 ### 23/10/2024
 
 -   Atualização das dependências e tecnlogias do projeto
