@@ -5,11 +5,21 @@
 </ion-header>
 
 <ion-content>
-	<div class="flex h-full w-full flex-col items-center justify-center">
-		<ng-container *ngFor="let semana of mes">
-			<div class="flex h-full w-full items-center justify-center">
-				<div *ngFor="let dia of semana" class="h-full flex-1 border border-white">{{ dia }}</div>
-			</div>
-		</ng-container>
+	<div class="flex h-full w-full flex-col">
+		<div class="flex w-full items-center justify-center py-4">
+			<div *ngFor="let dia of semana[sem_comeca_segunda? 'segunda' :'domingo']" class="flex-1 text-center font-semibold {{ dia.simplificado === 'Dom' ? 'text-red-500' : null }}">{{ dia.letra }}</div>
+		</div>
+		<div class="flex h-full w-full flex-col items-center justify-center">
+			<ng-container *ngFor="let semanas of mes">
+				<div class="flex h-full w-full items-center justify-center py-2">
+					<div *ngFor="let dia of semanas" class="h-full flex-1 flex-col flex text-center rounded-md {{ dia.selecionado ? 'border border-zinc-500 font-semibold' : null }}">
+						<div
+							class="mt-1 px-1 mx-auto font-medium {{ !dia.atual ? dia.domingo ? 'text-red-300 dark:text-red-800' : 'text-zinc-400 dark:text-zinc-500' : dia.domingo ? 'text-red-500' : null }} {{ dia.hoje ? 'text-white dark:text-black bg-black dark:bg-white rounded-md' : null }}">
+							{{ dia.dia }}
+						</div>
+					</div>
+				</div>
+			</ng-container>
+		</div>
 	</div>
 </ion-content>
