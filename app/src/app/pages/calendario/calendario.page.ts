@@ -94,4 +94,12 @@ export class CalendarioPage {
 		}
 		console.log('DIAS: ', this.mes);
 	}
+
+	selecionarData(data: any) {
+		console.log('CLICK: ', data);
+		let ano = this.data_selecionada.getFullYear();
+		let mes = data.atual ? this.data_selecionada.getMonth() + 1 : data.dia > 20 ? (this.data_selecionada.getMonth() ?? 12) : this.data_selecionada.getMonth() === 11 ? 1 : this.data_selecionada.getMonth() + 2;
+		const nova_data = new Date(`${mes}/${data.dia}/${ano}`);
+		console.log();
+	}
 }
