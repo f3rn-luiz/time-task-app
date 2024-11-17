@@ -102,6 +102,6 @@ export class CalendarioPage {
 
 	selecionarData(data: any) {
 		console.log('CLICK: ', data);
-		if (data.atual) this.data_selecionada = new Date(`${this.data_selecionada.getMonth() + 1}/${data.dia}/${this.data_selecionada.getFullYear()}`);
+		if (data.atual && data.dia !== this.data_selecionada.getDate()) this.data_selecionada = new Date(`${this.data_selecionada.getMonth() + 1}/${data.dia}/${this.data_selecionada.getFullYear()}`);
 	}
 }
