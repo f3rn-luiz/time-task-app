@@ -1,7 +1,7 @@
 <ion-content>
 	<div class="flex h-full w-full flex-col">
 		<div class="mt-4 flex w-full items-center justify-center text-2xl font-bold">
-			{{ meses[data_selecionada.getMonth()].simplificado }}<span *ngIf="hoje.getFullYear() !== data_selecionada.getFullYear()">/{{data_selecionada.getFullYear()}}</span>
+			{{ meses[data_selecionada.getMonth()].simplificado.toLocaleUpperCase() }}<span *ngIf="hoje.getFullYear() !== data_selecionada.getFullYear()">/{{data_selecionada.getFullYear()}}</span>
 		</div>
 		<div class="flex w-full items-center justify-center px-2 pb-2 pt-4">
 			<div *ngFor="let dia of semana[sem_comeca_segunda? 'segunda' :'domingo']" class="flex-1 text-center font-semibold {{ dia.simplificado === 'Dom' ? 'text-red-500' : null }}">{{ dia.simplificado }}</div>
