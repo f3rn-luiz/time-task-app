@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
 	selector: 'app-calendario',
 	templateUrl: 'calendario.page.html',
 	standalone: true,
-	imports: [IonicModule, CommonModule],
+	imports: [IonContent, IonToolbar, IonHeader, CommonModule],
 })
 export class CalendarioPage {
 	hoje = new Date();
