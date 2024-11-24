@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
 	selector: 'app-configuracao',
 	templateUrl: 'configuracao.page.html',
 	standalone: true,
-	imports: [IonicModule],
+	imports: [IonContent, IonTitle, IonToolbar, IonHeader],
 })
 export class ConfiguracaoPage {
 	constructor() {}
