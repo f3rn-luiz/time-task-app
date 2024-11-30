@@ -12,7 +12,18 @@
 <ion-content>
 	<div class="flex h-full w-full flex-col">
 		<div class="flex h-full w-full flex-col items-center justify-center">
-			<ng-container *ngFor="let semanas of mes">
+			<swiper-container class="h-full w-full" [loop]="false" [slidesPerView]="1" [pagination]="true" initial-slide="1">
+				<!-- <ng-container *ngFor="let banner of banners"> -->
+				<!-- <swiper-slide class="h-20 border border-blue-500 bg-gray-500">
+					<div class="banner">{{ banner }}</div>
+					</swiper-slide> -->
+				<swiper-slide class="flex h-full items-center justify-center border border-blue-500 bg-gray-500">a</swiper-slide>
+				<swiper-slide class="flex h-full items-center justify-center border border-blue-500 bg-gray-500">b</swiper-slide>
+				<swiper-slide class="flex h-full items-center justify-center border border-blue-500 bg-gray-500">c</swiper-slide>
+				<!-- </ng-container> -->
+			</swiper-container>
+
+			<!-- <ng-container *ngFor="let semanas of mes">
 				<div class="flex h-full w-full items-center justify-center border-t border-zinc-200 p-2 dark:border-zinc-700">
 					<div *ngFor="let dia of semanas" class="h-full flex-1 flex-col flex text-center rounded-md border {{ diaSelecionado(dia) ? 'border-zinc-500 font-semibold' : 'border-white dark:border-black' }}" (click)="selecionarData(dia)">
 						<div
@@ -21,7 +32,7 @@
 						</div>
 					</div>
 				</div>
-			</ng-container>
+			</ng-container> -->
 		</div>
 	</div>
 </ion-content>

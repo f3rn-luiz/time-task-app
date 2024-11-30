@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
@@ -7,8 +7,9 @@ import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 	templateUrl: 'calendario.page.html',
 	standalone: true,
 	imports: [IonContent, IonToolbar, IonHeader, CommonModule],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class CalendarioPage {
+export class CalendarioPage implements OnInit {
 	hoje = new Date();
 	data_selecionada = this.hoje;
 
@@ -51,9 +52,16 @@ export class CalendarioPage {
 		{ simplificado: 'Dez', completo: 'Dezembro' },
 	];
 
+	// banners: number[] = [0, 1, 2]; // Inicializa com os 3 banners
+	// currentIndex: number = 1; // Começa com o banner do meio
+
 	constructor() {
-		console.log('hoje: ' + this.hoje);
-		this.ordenarDias();
+		// console.log('hoje: ' + this.hoje);
+		// this.ordenarDias();
+	}
+
+	ngOnInit(): void {
+		this.eventosSwiper();
 	}
 
 	diaSelecionado(data: any): boolean {
@@ -103,5 +111,15 @@ export class CalendarioPage {
 	selecionarData(data: any) {
 		console.log('CLICK: ', data);
 		if (data.atual && data.dia !== this.data_selecionada.getDate()) this.data_selecionada = new Date(`${this.data_selecionada.getMonth() + 1}/${data.dia}/${this.data_selecionada.getFullYear()}`);
+	}
+
+	eventosSwiper() {
+		const swiper = document.querySelector('swiper-container')!.swiper;
+		swiper.on('slideChangeTransitionEnd', () => {
+			swiper.allowTouchMove = false;
+			if (swiper.activeIndex === swiper.slides.length - 1) swiper.addSlide(swiper.slides.length, '<swiper-slide class="flex h-full items-center justify-center border border-blue-500 bg-gray-500">hehe</swiper-slide>');
+			else if (swiper.activeIndex === 0) swiper.addSlide(0, '<swiper-slide class="flex h-full items-center justify-center border border-blue-500 bg-gray-500">hehe</swiper-slide>');
+			setTimeout(() => (swiper.allowTouchMove = true), 500);
+		});
 	}
 }
