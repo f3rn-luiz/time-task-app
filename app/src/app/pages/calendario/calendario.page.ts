@@ -10,54 +10,27 @@ import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CalendarioPage implements OnInit {
-	hoje = new Date();
-	data_selecionada = this.hoje;
+	dias_semana!: DiaSemana[];
+	calendario!: Mes[];
 
-	mes: any[][] = [[]];
+	data_hoje: Date = new Date();
+	data_seletor!: Date;
+	data_selecionada!: Date;
 
-	sem_comeca_segunda = false;
-	semana = {
-		domingo: [
-			{ letra: 'D', simplificado: 'Dom', completo: 'Domingo' },
-			{ letra: 'S', simplificado: 'Seg', completo: 'Segunda-feira' },
-			{ letra: 'T', simplificado: 'Ter', completo: 'Terça-feira' },
-			{ letra: 'Q', simplificado: 'Qua', completo: 'Quarta-feira' },
-			{ letra: 'Q', simplificado: 'Qui', completo: 'Quinta-feira' },
-			{ letra: 'S', simplificado: 'Sex', completo: 'Sexta-feira' },
-			{ letra: 'S', simplificado: 'Sab', completo: 'Sábado' },
-		],
-		segunda: [
-			{ letra: 'S', simplificado: 'Seg', completo: 'Segunda-feira' },
-			{ letra: 'T', simplificado: 'Ter', completo: 'Terça-feira' },
-			{ letra: 'Q', simplificado: 'Qua', completo: 'Quarta-feira' },
-			{ letra: 'Q', simplificado: 'Qui', completo: 'Quinta-feira' },
-			{ letra: 'S', simplificado: 'Sex', completo: 'Sexta-feira' },
-			{ letra: 'S', simplificado: 'Sab', completo: 'Sábado' },
-			{ letra: 'D', simplificado: 'Dom', completo: 'Domingo' },
-		],
-	};
+	meses!: MesAno[];
 
-	meses = [
-		{ simplificado: 'Jan', completo: 'Janeiro' },
-		{ simplificado: 'Fev', completo: 'Fevereiro' },
-		{ simplificado: 'Mar', completo: 'Março' },
-		{ simplificado: 'Abr', completo: 'Abril' },
-		{ simplificado: 'Mai', completo: 'Maio' },
-		{ simplificado: 'Jun', completo: 'Junho' },
-		{ simplificado: 'Jul', completo: 'Julho' },
-		{ simplificado: 'Ago', completo: 'Agosto' },
-		{ simplificado: 'Set', completo: 'Setembro' },
-		{ simplificado: 'Out', completo: 'Outubro' },
-		{ simplificado: 'Nov', completo: 'Novembro' },
-		{ simplificado: 'Dez', completo: 'Dezembro' },
-	];
+	slide_atual: number = 1;
 
-	// banners: number[] = [0, 1, 2]; // Inicializa com os 3 banners
-	// currentIndex: number = 1; // Começa com o banner do meio
-
-	constructor() {
-		// console.log('hoje: ' + this.hoje);
-		// this.ordenarDias();
+	constructor(private calendarioService: CalendarioService) {
+		this.dias_semana = calendarioService.dia_semana;
+		this.meses = calendarioService.meses;
+		calendarioService.calendario.subscribe({
+			next: (c) => {
+				if (c) this.calendario = c;
+			},
+		});
+		calendarioService.data_seletor.subscribe({ next: (d) => (this.data_seletor = d) });
+		calendarioService.data_selecionada.subscribe({ next: (d) => (this.data_selecionada = d) });
 	}
 
 	ngOnInit(): void {
