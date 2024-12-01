@@ -1,0 +1,21 @@
+.card-dia {
+	flex: 1 1 calc(100% / 7);
+	max-width: calc(100% / 7);
+	@apply box-border border;
+}
+
+.dia-normal {
+	@apply border-transparent;
+}
+
+.dia-domingo {
+	@apply border-transparent text-red-500;
+}
+
+.dia-hoje {
+	@apply rounded-md bg-black font-semibold text-white dark:bg-white dark:text-black;
+}
+
+.dia-selecionado {
+	@apply border-zinc-200 dark:border-zinc-700;
+}

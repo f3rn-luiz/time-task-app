@@ -7,6 +7,7 @@ import { Dia, DiaSemana, Mes, MesAno } from 'src/app/core/calendario/calendario.
 @Component({
 	selector: 'app-calendario',
 	templateUrl: 'calendario.page.html',
+	styleUrl: 'calendario.scss',
 	standalone: true,
 	imports: [IonContent, IonToolbar, IonHeader, CommonModule],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
