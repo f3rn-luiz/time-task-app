@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
-import { MesAno } from './calendario.type';
+import { BehaviorSubject } from 'rxjs';
+import { Dia, Mes, MesAno } from './calendario.type';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class CalendarioService {
+	data_hoje: Date = new Date();
+
+	calendario: BehaviorSubject<Mes[] | null> = new BehaviorSubject<Mes[] | null>(null);
+	data_seletor: BehaviorSubject<Date> = new BehaviorSubject<Date>(this.data_hoje);
+	data_selecionada: BehaviorSubject<Date> = new BehaviorSubject<Date>(this.data_hoje);
+
 	dia_semana = [
 		{ letra: 'D', simplificado: 'Dom', completo: 'Domingo' },
 		{ letra: 'S', simplificado: 'Seg', completo: 'Segunda-feira' },
