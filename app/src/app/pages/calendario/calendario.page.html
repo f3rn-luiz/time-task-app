@@ -14,8 +14,8 @@
 		<div class="flex h-full w-full flex-col items-center justify-center">
 			<swiper-container class="h-full w-full px-2" [loop]="false" [slidesPerView]="1" [pagination]="true" initial-slide="1">
 				<swiper-slide *ngFor="let mes of calendario" class="flex h-full w-full flex-wrap" style="padding-top: 1px">
-					<div *ngFor="let dia of mes.dias" class="card-dia flex flex-1 flex-col rounded-md text-center">
-						<div class="mx-auto mt-1 px-1 font-medium">{{ dia.dia }}</div>
+					<div *ngFor="let dia of mes.dias" class="card-dia flex flex-1 flex-col rounded-md text-center" [ngClass]="classeDia(dia, mes)" (click)="selecionarData(dia, mes)">
+						<div class="mx-auto mt-1 px-1 font-medium" [ngClass]="classeDiaHoje(dia, mes)">{{ dia.dia }}</div>
 					</div>
 				</swiper-slide>
 			</swiper-container>

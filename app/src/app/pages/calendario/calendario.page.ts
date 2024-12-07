@@ -52,6 +52,18 @@ export class CalendarioPage implements OnInit {
 		});
 	}
 
+	classeDia(dia: Dia, mes: Mes): string {
+		let classe = dia.dia_semana === 0 ? 'dia-domingo' : 'dia-normal';
+		classe += dia.mes_atual && mes.ano === this.data_selecionada.getFullYear() && mes.mes === this.data_selecionada.getMonth() && dia.dia === this.data_selecionada.getDate() ? ' dia-selecionado' : '';
+		classe += dia.mes_atual ? '' : ' opacity-50';
+		return classe;
+	}
+
+	classeDiaHoje(dia: Dia, mes: Mes): string {
+		if (dia.dia === this.data_hoje.getDate() && mes.mes === this.data_hoje.getMonth() && mes.ano === this.data_hoje.getFullYear()) return 'dia-hoje';
+		else return '';
+	}
+
 	selecionarData(dia: Dia, mes: Mes) {
 		if (dia.mes_atual) this.calendarioService.selecionarData(dia, mes);
 	}
