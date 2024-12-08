@@ -37,5 +37,54 @@ export class CalendarioService {
 		{ simplificado: 'Dez', completo: 'Dezembro' },
 	];
 
-	constructor() {}
+	constructor() {
+		this.carregarCalendario();
+	}
+
+	carregarCalendario() {
+		this.carregarMes({ mes: this.data_hoje.getMonth() - 1 < 0 ? 11 : this.data_hoje.getMonth() - 1, ano: this.data_hoje.getMonth() - 1 < 0 ? this.data_hoje.getFullYear() - 1 : this.data_hoje.getFullYear() }, true);
+		this.carregarMes({ mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() }, true);
+		this.carregarMes({ mes: this.data_hoje.getMonth() + 1 > 11 ? 0 : this.data_hoje.getMonth() + 1, ano: this.data_hoje.getMonth() + 1 > 11 ? this.data_hoje.getFullYear() + 1 : this.data_hoje.getFullYear() }, true);
+	}
+
+	carregarMes(data: { mes: number; ano: number }, ultimo: boolean) {
+		let primeiro_dia = new Date(`${data.mes + 1}/01/${data.ano}`);
+		let ultimo_dia: Date = new Date(`${data.mes + 1 === 12 ? 1 : data.mes + 2}/01/${data.ano}`);
+		ultimo_dia.setHours(23, 59, 59);
+		ultimo_dia = new Date(ultimo_dia.getTime() - 86400000);
+
+		let dia_semana = primeiro_dia.getDay();
+		let mes: Mes = { mes: data.mes, dias: [], ano: data.ano };
+
+		if (dia_semana > 0) {
+			let dia_mes_anterior = new Date(primeiro_dia.getTime() - 86400000).getDate();
+			for (let idx = dia_semana - 1; idx >= 0; idx--) {
+				if (mes.dias) mes.dias = [{ dia: dia_mes_anterior, dia_semana: idx, mes_atual: false }, ...mes.dias];
+				else mes.dias = [{ dia: dia_mes_anterior, dia_semana: idx, mes_atual: false }];
+				dia_mes_anterior--;
+			}
+		}
+
+		for (let idx = 1; idx <= ultimo_dia.getDate(); idx++) {
+			mes.dias.push({ dia: idx, dia_semana: dia_semana, mes_atual: true });
+			dia_semana = dia_semana === 6 ? 0 : dia_semana + 1;
+		}
+
+		if (dia_semana > 0) {
+			for (let idx = 1; dia_semana <= 6; idx++) {
+				mes.dias.push({ dia: idx, dia_semana: dia_semana, mes_atual: false });
+				dia_semana++;
+			}
+		}
+
+		if (ultimo) {
+			if (this.calendario.value) this.calendario.next([...this.calendario.value, mes]);
+			else this.calendario.next([mes]);
+		} else {
+			if (this.calendario.value) this.calendario.next([mes, ...this.calendario.value]);
+			else this.calendario.next([mes]);
+		}
+
+		console.log('Mes: ', this.calendario.value);
+	}
 }
