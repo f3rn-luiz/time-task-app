@@ -87,4 +87,9 @@ export class CalendarioService {
 
 		console.log('Mes: ', this.calendario.value);
 	}
+
+	selecionarData(dia: Dia, mes: Mes) {
+		let modelo_data = `${mes.mes + 1 <= 9 ? '0' : ''}${mes.mes + 1}/${dia.dia <= 9 ? '0' : ''}${dia.dia}/${mes.ano}`;
+		this.data_selecionada.next(new Date(modelo_data));
+	}
 }
