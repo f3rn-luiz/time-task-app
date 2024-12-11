@@ -50,7 +50,9 @@ export class CalendarioPage implements OnInit {
 				swiper.slideTo(1, 0);
 			}
 			this.slide_atual = swiper.activeIndex;
-			this.selecionarData({ dia: 1, dia_semana: 0, mes_atual: true }, { ...this.calendario[this.slide_atual] });
+			if (this.calendario[this.slide_atual].mes === this.data_hoje.getMonth() && this.calendario[this.slide_atual].ano === this.data_hoje.getFullYear())
+				this.selecionarData({ dia: this.data_hoje.getDate(), dia_semana: 0, mes_atual: true }, { ...this.calendario[this.slide_atual] });
+			else this.selecionarData({ dia: 1, dia_semana: 0, mes_atual: true }, { ...this.calendario[this.slide_atual] });
 			setTimeout(() => (swiper.allowTouchMove = true), 500);
 		});
 	}
