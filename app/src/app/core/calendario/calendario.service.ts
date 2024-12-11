@@ -87,4 +87,14 @@ export class CalendarioService {
 		let modelo_data = `${mes.mes + 1 <= 9 ? '0' : ''}${mes.mes + 1}/${dia.dia <= 9 ? '0' : ''}${dia.dia}/${mes.ano}`;
 		this.data_selecionada.next(new Date(modelo_data));
 	}
+
+	incrementarCalendario(ultimo: boolean) {
+		if (ultimo) {
+			const ultimo_mes = this.calendario.value![this.calendario.value!.length - 1];
+			this.carregarMes({ mes: ultimo_mes.mes + 1 > 11 ? 0 : ultimo_mes.mes + 1, ano: ultimo_mes.mes + 1 > 11 ? ultimo_mes.ano + 1 : ultimo_mes.ano }, true);
+		} else {
+			const primeiro_mes = this.calendario.value![0];
+			this.carregarMes({ mes: primeiro_mes.mes - 1 < 0 ? 11 : primeiro_mes.mes - 1, ano: primeiro_mes.mes - 1 < 0 ? primeiro_mes.ano - 1 : primeiro_mes.ano }, false);
+		}
+	}
 }

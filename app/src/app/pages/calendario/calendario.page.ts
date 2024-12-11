@@ -44,8 +44,11 @@ export class CalendarioPage implements OnInit {
 		const swiper = document.querySelector('swiper-container')!.swiper;
 		swiper.on('slideChangeTransitionEnd', () => {
 			swiper.allowTouchMove = false;
-			if (swiper.activeIndex === swiper.slides.length - 1) swiper.addSlide(swiper.slides.length, '<swiper-slide class="flex h-full items-center justify-center border border-blue-500 bg-gray-500">hehe</swiper-slide>');
-			else if (swiper.activeIndex === 0) swiper.addSlide(0, '<swiper-slide class="flex h-full items-center justify-center border border-blue-500 bg-gray-500">hehe</swiper-slide>');
+			if (swiper.activeIndex === swiper.slides.length - 1) this.calendarioService.incrementarCalendario(true);
+			else if (swiper.activeIndex === 0) {
+				this.calendarioService.incrementarCalendario(false);
+				swiper.slideTo(1, 0);
+			}
 			this.slide_atual = swiper.activeIndex;
 			this.selecionarData({ dia: 1, dia_semana: 0, mes_atual: true }, { ...this.calendario[this.slide_atual] });
 			setTimeout(() => (swiper.allowTouchMove = true), 500);
