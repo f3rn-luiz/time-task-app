@@ -58,7 +58,7 @@ export class CalendarioPage implements OnInit {
 	classeDia(dia: Dia, mes: Mes): string {
 		let classe = dia.dia_semana === 0 ? 'dia-domingo' : 'dia-normal';
 		classe += dia.mes_atual && mes.ano === this.data_selecionada.getFullYear() && mes.mes === this.data_selecionada.getMonth() && dia.dia === this.data_selecionada.getDate() ? ' dia-selecionado' : '';
-		classe += dia.mes_atual ? '' : ' opacity-50';
+		classe += dia.mes_atual ? '' : ' opacity-35 dark:opacity-40';
 		return classe;
 	}
 
