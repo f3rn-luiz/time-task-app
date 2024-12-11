@@ -77,15 +77,10 @@ export class CalendarioService {
 			}
 		}
 
-		if (ultimo) {
-			if (this.calendario.value) this.calendario.next([...this.calendario.value, mes]);
-			else this.calendario.next([mes]);
-		} else {
-			if (this.calendario.value) this.calendario.next([mes, ...this.calendario.value]);
-			else this.calendario.next([mes]);
-		}
-
-		console.log('Mes: ', this.calendario.value);
+		if (this.calendario.value) {
+			if (ultimo) this.calendario.next([...this.calendario.value, mes]);
+			else this.calendario.next([mes, ...this.calendario.value]);
+		} else this.calendario.next([mes]);
 	}
 
 	selecionarData(dia: Dia, mes: Mes) {
