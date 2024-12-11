@@ -20,6 +20,8 @@
 # Ionic
 /app/.ionic
 /app/www
+/app/android
+/app/ios
 /app/platforms
 /app/plugins
 
