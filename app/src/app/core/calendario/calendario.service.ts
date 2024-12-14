@@ -9,6 +9,7 @@ export class CalendarioService {
 	data_hoje: Date = new Date();
 
 	calendario: BehaviorSubject<Mes[] | null> = new BehaviorSubject<Mes[] | null>(null);
+	datas_loop: BehaviorSubject<Mes[]> = new BehaviorSubject<Mes[]>([]); // index 0 -> mes atual / index 1 -> proximo mes / index 2 -> mes anterior / (Tudo muda de acordo com o index atual do swiper)
 	data_seletor: BehaviorSubject<Date> = new BehaviorSubject<Date>(this.data_hoje);
 	data_selecionada: BehaviorSubject<Date> = new BehaviorSubject<Date>(this.data_hoje);
 
@@ -45,6 +46,7 @@ export class CalendarioService {
 		this.carregarMes({ mes: this.data_hoje.getMonth() - 1 < 0 ? 11 : this.data_hoje.getMonth() - 1, ano: this.data_hoje.getMonth() - 1 < 0 ? this.data_hoje.getFullYear() - 1 : this.data_hoje.getFullYear() }, true);
 		this.carregarMes({ mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() }, true);
 		this.carregarMes({ mes: this.data_hoje.getMonth() + 1 > 11 ? 0 : this.data_hoje.getMonth() + 1, ano: this.data_hoje.getMonth() + 1 > 11 ? this.data_hoje.getFullYear() + 1 : this.data_hoje.getFullYear() }, true);
+		this.datas_loop.next([this.calendario.value![1], this.calendario.value![2], this.calendario.value![0]]);
 	}
 
 	carregarMes(data: { mes: number; ano: number }, ultimo: boolean) {
