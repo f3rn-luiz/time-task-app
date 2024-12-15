@@ -104,11 +104,17 @@ export class CalendarioService {
 		const data_atual = { mes: this.datas_loop.value[slide_atual].mes, ano: this.datas_loop.value[slide_atual].ano };
 		let data: Mes | undefined;
 		if (proximo) {
-			this.incrementarCalendario(true);
 			data = this.calendario.value!.find((c) => c.mes === (data_atual.mes === 11 ? 0 : data_atual.mes + 1) && c.ano === (data_atual.mes === 11 ? data_atual.ano + 1 : data_atual.ano));
+			if (!data) {
+				this.incrementarCalendario(true);
+				data = this.calendario.value![this.calendario.value!.length - 1];
+			}
 		} else {
-			this.incrementarCalendario(false);
 			data = this.calendario.value!.find((c) => c.mes === (data_atual.mes === 0 ? 11 : data_atual.mes - 1) && c.ano === (data_atual.mes === 0 ? data_atual.ano - 1 : data_atual.ano));
+			if (!data) {
+				this.incrementarCalendario(false);
+				data = this.calendario.value![0];
+			}
 		}
 		if (data) this.injetarDataLoop(slide_atual, proximo, data);
 	}
