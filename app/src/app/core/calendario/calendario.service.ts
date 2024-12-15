@@ -99,4 +99,32 @@ export class CalendarioService {
 			this.carregarMes({ mes: primeiro_mes.mes - 1 < 0 ? 11 : primeiro_mes.mes - 1, ano: primeiro_mes.mes - 1 < 0 ? primeiro_mes.ano - 1 : primeiro_mes.ano }, false);
 		}
 	}
+
+	atualizarDatasLoop(slide_atual: number, proximo: boolean) {
+		const data_atual = { mes: this.datas_loop.value[slide_atual].mes, ano: this.datas_loop.value[slide_atual].ano };
+		let data: Mes | undefined;
+		if (proximo) {
+			this.incrementarCalendario(true);
+			data = this.calendario.value!.find((c) => c.mes === (data_atual.mes === 11 ? 0 : data_atual.mes + 1) && c.ano === (data_atual.mes === 11 ? data_atual.ano + 1 : data_atual.ano));
+		} else {
+			this.incrementarCalendario(false);
+			data = this.calendario.value!.find((c) => c.mes === (data_atual.mes === 0 ? 11 : data_atual.mes - 1) && c.ano === (data_atual.mes === 0 ? data_atual.ano - 1 : data_atual.ano));
+		}
+		if (data) this.injetarDataLoop(slide_atual, proximo, data);
+	}
+
+	injetarDataLoop(slide_atual: number, proximo: boolean, data: Mes) {
+		let datas_loop = this.datas_loop.value;
+		if (slide_atual === 0) {
+			if (proximo) datas_loop[1] = data;
+			else datas_loop[2] = data;
+		} else if (slide_atual === 1) {
+			if (proximo) datas_loop[2] = data;
+			else datas_loop[0] = data;
+		} else {
+			if (proximo) datas_loop[0] = data;
+			else datas_loop[1] = data;
+		}
+		this.datas_loop.next(datas_loop);
+	}
 }
