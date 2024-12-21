@@ -19,4 +19,5 @@ export interface Mes {
 	mes: number; // 0 a 11
 	dias: Dia[];
 	ano: number;
+	atual: boolean;
 }

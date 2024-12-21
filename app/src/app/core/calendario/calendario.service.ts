@@ -44,19 +44,19 @@ export class CalendarioService {
 
 	carregarCalendario() {
 		this.carregarMes({ mes: this.data_hoje.getMonth() - 1 < 0 ? 11 : this.data_hoje.getMonth() - 1, ano: this.data_hoje.getMonth() - 1 < 0 ? this.data_hoje.getFullYear() - 1 : this.data_hoje.getFullYear() }, true);
-		this.carregarMes({ mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() }, true);
+		this.carregarMes({ mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() }, true, true);
 		this.carregarMes({ mes: this.data_hoje.getMonth() + 1 > 11 ? 0 : this.data_hoje.getMonth() + 1, ano: this.data_hoje.getMonth() + 1 > 11 ? this.data_hoje.getFullYear() + 1 : this.data_hoje.getFullYear() }, true);
 		this.datas_loop.next([this.calendario.value![1], this.calendario.value![2], this.calendario.value![0]]);
 	}
 
-	carregarMes(data: { mes: number; ano: number }, ultimo: boolean) {
+	carregarMes(data: { mes: number; ano: number }, ultimo: boolean, atual: boolean = false) {
 		let primeiro_dia = new Date(`${data.mes + 1}/01/${data.ano}`);
 		let ultimo_dia: Date = new Date(`${data.mes + 1 === 12 ? 1 : data.mes + 2}/01/${data.ano}`);
 		ultimo_dia.setHours(23, 59, 59);
 		ultimo_dia = new Date(ultimo_dia.getTime() - 86400000);
 
 		let dia_semana = primeiro_dia.getDay();
-		let mes: Mes = { mes: data.mes, dias: [], ano: data.ano };
+		let mes: Mes = { mes: data.mes, dias: [], ano: data.ano, atual: atual };
 
 		if (dia_semana > 0) {
 			let dia_mes_anterior = new Date(primeiro_dia.getTime() - 86400000).getDate();
