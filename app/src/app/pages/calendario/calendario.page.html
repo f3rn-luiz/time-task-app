@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-toolbar>
 		<div class="mt-4 flex w-full items-center justify-center text-2xl font-bold">
-			{{ meses[data_selecionada.getMonth()].simplificado.toLocaleUpperCase() }}<span *ngIf="data_hoje.getFullYear() !== data_selecionada.getFullYear()">/{{data_selecionada.getFullYear()}}</span>
+			{{ meses[datas_loop[slide_atual].mes].simplificado }}<span *ngIf="data_hoje.getFullYear() !== datas_loop[slide_atual].ano">/{{ datas_loop[slide_atual].ano }}</span>
 		</div>
 		<div class="flex w-full items-center justify-center px-2 pb-2 pt-4">
 			<div *ngFor="let dia of dias_semana" class="flex-1 text-center font-semibold {{ dia.simplificado === 'Dom' ? 'text-red-500' : null }}">{{ dia.simplificado }}</div>
@@ -12,8 +12,8 @@
 <ion-content>
 	<div class="flex h-full w-full flex-col">
 		<div class="flex h-full w-full flex-col items-center justify-center">
-			<swiper-container class="h-full w-full px-2" [slidesPerView]="1" initial-slide="1">
-				<swiper-slide *ngFor="let mes of calendario" class="flex h-full w-full flex-wrap" style="padding-top: 1px">
+			<swiper-container class="h-full w-full" [slidesPerView]="1" loop="true">
+				<swiper-slide *ngFor="let mes of datas_loop" class="flex h-full w-full flex-wrap px-2" style="padding-top: 1px">
 					<div *ngFor="let dia of mes.dias" class="card-dia flex flex-1 flex-col rounded-md text-center transition-all duration-300" [ngClass]="classeDia(dia, mes)" (click)="selecionarData(dia, mes)">
 						<div class="mx-auto mt-1 px-1 font-medium" [ngClass]="classeDiaHoje(dia, mes)">{{ dia.dia }}</div>
 					</div>

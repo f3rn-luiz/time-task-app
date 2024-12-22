@@ -14,7 +14,7 @@ import { Dia, DiaSemana, Mes, MesAno } from 'src/app/core/calendario/calendario.
 })
 export class CalendarioPage implements OnInit {
 	dias_semana!: DiaSemana[];
-	calendario!: Mes[];
+	datas_loop!: Mes[];
 
 	data_hoje: Date = new Date();
 	data_seletor!: Date;
@@ -27,9 +27,9 @@ export class CalendarioPage implements OnInit {
 	constructor(private calendarioService: CalendarioService) {
 		this.dias_semana = calendarioService.dia_semana;
 		this.meses = calendarioService.meses;
-		calendarioService.calendario.subscribe({
+		calendarioService.datas_loop.subscribe({
 			next: (c) => {
-				if (c) this.calendario = c;
+				if (c) this.datas_loop = c;
 			},
 		});
 		calendarioService.data_seletor.subscribe({ next: (d) => (this.data_seletor = d) });
