@@ -22,7 +22,7 @@ export class CalendarioPage implements OnInit {
 
 	meses!: MesAno[];
 
-	slide_atual: number = 1;
+	slide_atual: number = 0;
 
 	constructor(private calendarioService: CalendarioService) {
 		this.dias_semana = calendarioService.dia_semana;
