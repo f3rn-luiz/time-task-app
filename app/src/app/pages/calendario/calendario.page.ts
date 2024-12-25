@@ -42,18 +42,17 @@ export class CalendarioPage implements OnInit {
 
 	iniciarEventosSwiper() {
 		const swiper = document.querySelector('swiper-container')!.swiper;
+		swiper.on('slideNextTransitionStart', () => {
+			this.slide_atual = this.slide_atual === 2 ? 0 : this.slide_atual + 1;
+			this.calendarioService.atualizarDatasLoop(this.slide_atual, true);
+		});
+		swiper.on('slidePrevTransitionStart', () => {
+			this.slide_atual = this.slide_atual === 0 ? 2 : this.slide_atual - 1;
+			this.calendarioService.atualizarDatasLoop(this.slide_atual, false);
+		});
 		swiper.on('slideChangeTransitionEnd', () => {
-			swiper.allowTouchMove = false;
-			if (swiper.activeIndex === swiper.slides.length - 1) this.calendarioService.incrementarCalendario(true);
-			else if (swiper.activeIndex === 0) {
-				this.calendarioService.incrementarCalendario(false);
-				swiper.slideTo(1, 0);
-			}
-			this.slide_atual = swiper.activeIndex;
-			if (this.calendario[this.slide_atual].mes === this.data_hoje.getMonth() && this.calendario[this.slide_atual].ano === this.data_hoje.getFullYear())
-				this.selecionarData({ dia: this.data_hoje.getDate(), dia_semana: 0, mes_atual: true }, { ...this.calendario[this.slide_atual] });
-			else this.selecionarData({ dia: 1, dia_semana: 0, mes_atual: true }, { ...this.calendario[this.slide_atual] });
-			setTimeout(() => (swiper.allowTouchMove = true), 500);
+			if (this.datas_loop[this.slide_atual].atual) this.selecionarData({ dia: this.data_hoje.getDate(), dia_semana: 0, mes_atual: true }, { ...this.datas_loop[this.slide_atual] });
+			else this.selecionarData({ dia: 1, dia_semana: 0, mes_atual: true }, { ...this.datas_loop[this.slide_atual] });
 		});
 	}
 
