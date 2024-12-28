@@ -21,3 +21,9 @@ export interface Mes {
 	ano: number;
 	atual: boolean;
 }
+
+export interface DataSimples {
+	dia: number;
+	mes: number;
+	ano: number;
+}

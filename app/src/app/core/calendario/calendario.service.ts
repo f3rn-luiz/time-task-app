@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Dia, Mes, MesAno } from './calendario.type';
+import { DataSimples, Mes, MesAno } from './calendario.type';
 
 @Injectable({
 	providedIn: 'root',
@@ -11,7 +11,7 @@ export class CalendarioService {
 	calendario: BehaviorSubject<Mes[] | null> = new BehaviorSubject<Mes[] | null>(null);
 	datas_loop: BehaviorSubject<Mes[]> = new BehaviorSubject<Mes[]>([]); // index 0 -> mes atual / index 1 -> proximo mes / index 2 -> mes anterior / (Tudo muda de acordo com o index atual do swiper)
 	data_seletor: BehaviorSubject<Date> = new BehaviorSubject<Date>(this.data_hoje);
-	data_selecionada: BehaviorSubject<Date> = new BehaviorSubject<Date>(this.data_hoje);
+	data_selecionada: BehaviorSubject<DataSimples> = new BehaviorSubject<DataSimples>({ dia: this.data_hoje.getDate(), mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() });
 
 	dia_semana = [
 		{ letra: 'D', simplificado: 'Dom', completo: 'Domingo' },

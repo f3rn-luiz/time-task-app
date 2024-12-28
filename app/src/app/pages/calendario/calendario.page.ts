@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 import { CalendarioService } from 'src/app/core/calendario/calendario.service';
-import { Dia, DiaSemana, Mes, MesAno } from 'src/app/core/calendario/calendario.type';
+import { DataSimples, Dia, DiaSemana, Mes, MesAno } from 'src/app/core/calendario/calendario.type';
 
 @Component({
 	selector: 'app-calendario',
@@ -23,6 +23,10 @@ export class CalendarioPage implements OnInit {
 	meses!: MesAno[];
 
 	slide_atual: number = 0;
+
+	data_hoje: Date = new Date();
+	data_simples_hoje: DataSimples = { dia: this.data_hoje.getDate(), mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() };
+	data_selecionada!: DataSimples;
 
 	constructor(private calendarioService: CalendarioService) {
 		this.dias_semana = calendarioService.dia_semana;
