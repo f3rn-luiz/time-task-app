@@ -14,8 +14,14 @@
 		<div class="flex h-full w-full flex-col items-center justify-center">
 			<swiper-container class="h-full w-full" [slidesPerView]="1" loop="true">
 				<swiper-slide *ngFor="let mes of datas_loop" class="flex h-full w-full flex-wrap px-2" style="padding-top: 1px">
-					<div *ngFor="let dia of mes.dias" class="card-dia flex flex-1 flex-col rounded-md text-center transition-all duration-300" [ngClass]="classeDia(dia, mes)" (click)="selecionarData(dia, mes)">
-						<div class="mx-auto mt-1 px-1 font-medium" [ngClass]="classeDiaHoje(dia, mes)">{{ dia.dia }}</div>
+					<div
+						*ngFor="let dia of mes.dias"
+						class="card-dia flex flex-1 flex-col rounded-md text-center transition-all duration-300"
+						[ngClass]="(dia.dia_semana === 0 ? 'dia-domingo' : 'dia-normal') + (dia.mes_atual && datas_swiper[slide].ano === this.data_selecionada.ano && datas_swiper[slide].mes === this.data_selecionada.mes && dia.dia === this.data_selecionada.dia ? ' dia-selecionado' : '') + (dia.mes_atual ? '' : ' opacity-35 dark:opacity-40')"
+						(click)="selecionarData(dia, datas_swiper[slide])">
+						<div class="mx-auto mt-1 px-1 font-medium" [ngClass]="data_simples_hoje.dia === dia.dia && data_simples_hoje.mes === datas_swiper[slide].mes && data_simples_hoje.ano === datas_swiper[slide].ano ? 'dia-hoje' : null">
+							{{ dia.dia }}
+						</div>
 					</div>
 				</swiper-slide>
 			</swiper-container>

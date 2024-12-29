@@ -85,11 +85,6 @@ export class CalendarioService {
 		} else this.calendario.next([mes]);
 	}
 
-	selecionarData(dia: Dia, mes: Mes) {
-		let modelo_data = `${mes.mes + 1 <= 9 ? '0' : ''}${mes.mes + 1}/${dia.dia <= 9 ? '0' : ''}${dia.dia}/${mes.ano}`;
-		this.data_selecionada.next(new Date(modelo_data));
-	}
-
 	incrementarCalendario(ultimo: boolean) {
 		if (ultimo) {
 			const ultimo_mes = this.calendario.value![this.calendario.value!.length - 1];
