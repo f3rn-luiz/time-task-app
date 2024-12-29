@@ -114,7 +114,7 @@ export class CalendarioService {
 		if (data) this.injetarDataLoop(slide_atual, proximo, data);
 	}
 
-	injetarDataLoop(slide_atual: number, proximo: boolean, data: Mes) {
+	private injetarDataLoop(slide_atual: number, proximo: boolean, data: Mes) {
 		let datas_loop = this.datas_loop.value;
 		if (slide_atual === 0) {
 			if (proximo) datas_loop[1] = data;
@@ -127,5 +127,11 @@ export class CalendarioService {
 			else datas_loop[1] = data;
 		}
 		this.datas_loop.next(datas_loop);
+		this.selecionarPrimeiraData(slide_atual);
+	}
+
+	private selecionarPrimeiraData(slide_atual: number) {
+		if (this.datas_loop.value[slide_atual].atual) this.data_selecionada.next({ dia: this.data_hoje.getDate(), mes: this.datas_loop.value[slide_atual].mes, ano: this.datas_loop.value[slide_atual].ano });
+		else this.data_selecionada.next({ dia: 1, mes: this.datas_loop.value[slide_atual].mes, ano: this.datas_loop.value[slide_atual].ano });
 	}
 }
