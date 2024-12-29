@@ -3,6 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { IonContent, IonHeader, IonToolbar } from '@ionic/angular/standalone';
 import { CalendarioService } from 'src/app/core/calendario/calendario.service';
 import { DataSimples, Dia, DiaSemana, Mes, MesAno } from 'src/app/core/calendario/calendario.type';
+import { Swiper } from 'swiper/types';
 
 @Component({
 	selector: 'app-calendario',
@@ -16,6 +17,7 @@ export class CalendarioPage implements OnInit {
 	dias_semana!: DiaSemana[];
 	meses!: MesAno[];
 
+	private swiper!: Swiper;
 	datas_swiper!: Mes[];
 	slides_swiper = [0, 1, 2];
 	slide_atual: number = 0;
@@ -60,18 +62,26 @@ export class CalendarioPage implements OnInit {
 	}
 
 	iniciarEventosSwiper() {
-		const swiper = document.querySelector('swiper-container')!.swiper;
-		swiper.on('slideNextTransitionStart', () => {
+		this.swiper = document.querySelector('swiper-container')!.swiper;
+		this.swiper.on('slideNextTransitionStart', () => {
 			this.slide_atual = this.slide_atual === 2 ? 0 : this.slide_atual + 1;
 			this.calendarioService.atualizarDatasLoop(this.slide_atual, true);
 		});
-		swiper.on('slidePrevTransitionStart', () => {
+		this.swiper.on('slidePrevTransitionStart', () => {
 			this.slide_atual = this.slide_atual === 0 ? 2 : this.slide_atual - 1;
 			this.calendarioService.atualizarDatasLoop(this.slide_atual, false);
 		});
 	}
 
 	selecionarData(dia: Dia, mes: Mes) {
-		if (dia.mes_atual) this.calendarioService.data_selecionada.next({ dia: dia.dia, mes: mes.mes, ano: mes.ano });
+		if (!dia.mes_atual) {
+			if (dia.dia > 15) {
+				this.calendarioService.data_selecionada.next({ dia: dia.dia, mes: mes.mes === 0 ? 11 : mes.mes - 1, ano: mes.mes === 0 ? mes.ano - 1 : mes.ano });
+				this.swiper.slidePrev();
+			} else {
+				this.calendarioService.data_selecionada.next({ dia: dia.dia, mes: mes.mes === 11 ? 0 : mes.mes + 1, ano: mes.mes === 11 ? mes.ano + 1 : mes.ano });
+				this.swiper.slideNext();
+			}
+		} else this.calendarioService.data_selecionada.next({ dia: dia.dia, mes: mes.mes, ano: mes.ano });
 	}
 }

@@ -127,7 +127,7 @@ export class CalendarioService {
 			else datas_loop[1] = data;
 		}
 		this.datas_loop.next(datas_loop);
-		this.selecionarPrimeiraData(slide_atual);
+		if (this.data_selecionada.value.mes !== datas_loop[slide_atual].mes || this.data_selecionada.value.ano !== datas_loop[slide_atual].ano) this.selecionarPrimeiraData(slide_atual);
 	}
 
 	private selecionarPrimeiraData(slide_atual: number) {
