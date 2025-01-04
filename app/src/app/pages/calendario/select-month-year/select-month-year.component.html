@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="danger" (click)="fecharModal()">Voltar</ion-button>
+		</ion-buttons>
+		<ion-title>Seleção Mês e Ano</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="confirmarSelecao()">Selecionar</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="flex w-full items-center justify-center">
+		<ion-picker>
+			<ion-picker-column [value]="data_selecionada.mes" (ionChange)="atualizarMes($event.detail.value)">
+				<ion-picker-column-option *ngFor="let mes of meses" [value]="mes.id">{{ mes.titulo }}</ion-picker-column-option>
+			</ion-picker-column>
+			<ion-picker-column [value]="data_selecionada.ano" (ionChange)="atualizarAno($event.detail.value)">
+				<ion-picker-column-option *ngFor="let ano of anos" [value]="ano">{{ ano }}</ion-picker-column-option>
+			</ion-picker-column>
+		</ion-picker>
+	</div>
+</ion-content>
