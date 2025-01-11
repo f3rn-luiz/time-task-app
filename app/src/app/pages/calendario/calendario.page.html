@@ -11,10 +11,10 @@
 </ion-header>
 
 <ion-content>
-	<div class="flex h-full w-full flex-col">
-		<div class="flex h-full w-full flex-col items-center justify-center">
-			<swiper-container class="h-full w-full" [slidesPerView]="1" loop="true">
-				<swiper-slide *ngFor="let slide of slides_swiper" class="flex h-full w-full flex-wrap px-2" style="padding-top: 1px">
+	<div class="flex size-full flex-col">
+		<div class="flex size-full flex-col items-center justify-center">
+			<swiper-container class="size-full" [slidesPerView]="1" loop="true">
+				<swiper-slide *ngFor="let slide of slides_swiper" class="flex size-full flex-wrap px-2" style="padding-top: 1px">
 					<div
 						*ngFor="let dia of datas_swiper[slide].dias"
 						class="card-dia flex flex-1 flex-col rounded-md text-center transition-all duration-300"
