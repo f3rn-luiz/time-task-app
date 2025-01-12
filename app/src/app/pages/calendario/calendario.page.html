@@ -2,7 +2,15 @@
 	<ion-toolbar>
 		<div class="relative mt-4 flex w-full items-center justify-center">
 			<div class="text-2xl font-bold uppercase" (click)="selecionarMesAno()">
-			{{ meses[datas_swiper[slide_atual].mes].simplificado }}<span *ngIf="data_hoje.getFullYear() !== datas_swiper[slide_atual].ano">/{{ datas_swiper[slide_atual].ano }}</span>
+				{{ meses[datas_swiper[slide_atual].mes].simplificado }}<span *ngIf="data_hoje.getFullYear() !== datas_swiper[slide_atual].ano">/{{ datas_swiper[slide_atual].ano }}</span>
+			</div>
+
+			<div class="absolute right-4 flex size-8 items-center justify-center">
+				<div class="relative flex size-full items-center justify-center">
+					<ion-icon class="size-full" name="calendar-clear-outline" />
+					<div class="absolute top-2 font-semibold">{{ data_simples_hoje.dia }}</div>
+				</div>
+			</div>
 		</div>
 		<div class="flex w-full items-center justify-center px-2 pb-2 pt-4">
 			<div *ngFor="let dia of dias_semana" class="flex-1 text-center font-semibold {{ dia.simplificado === 'Dom' ? 'text-red-500' : null }}">{{ dia.simplificado }}</div>
