@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { IonContent, IonHeader, IonToolbar, ModalController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonModal, IonToolbar } from '@ionic/angular/standalone';
 import { CalendarioService } from 'src/app/core/calendario/calendario.service';
 import { DataSimples, Dia, DiaSemana, Mes, MesAno } from 'src/app/core/calendario/calendario.type';
 import { Swiper } from 'swiper/types';
@@ -11,7 +11,7 @@ import { SelectMonthYearComponent } from './select-month-year/select-month-year.
 	templateUrl: 'calendario.page.html',
 	styleUrl: 'calendario.scss',
 	standalone: true,
-	imports: [IonContent, IonToolbar, IonHeader, CommonModule],
+	imports: [IonContent, IonToolbar, IonHeader, IonModal, CommonModule, SelectMonthYearComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CalendarioPage implements OnInit {
@@ -27,10 +27,7 @@ export class CalendarioPage implements OnInit {
 	data_simples_hoje: DataSimples = { dia: this.data_hoje.getDate(), mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() };
 	data_selecionada!: DataSimples;
 
-	constructor(
-		private calendarioService: CalendarioService,
-		private modalController: ModalController,
-	) {
+	constructor(private calendarioService: CalendarioService) {
 		this.dias_semana = calendarioService.dia_semana;
 		this.meses = calendarioService.meses;
 		calendarioService.datas_loop.subscribe({
@@ -87,17 +84,5 @@ export class CalendarioPage implements OnInit {
 				this.swiper.slideNext();
 			}
 		} else this.calendarioService.data_selecionada.next({ dia: dia.dia, mes: mes.mes, ano: mes.ano });
-	}
-
-	async selecionarMesAno() {
-		const modal = await this.modalController.create({
-			component: SelectMonthYearComponent,
-			breakpoints: [0.4],
-			initialBreakpoint: 0.4,
-		});
-		modal.present();
-		await modal.onWillDismiss().then(({ data }) => {
-			if (data) console.log(data);
-		});
 	}
 }

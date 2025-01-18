@@ -1,7 +1,7 @@
 <ion-header>
 	<ion-toolbar>
 		<div class="relative mt-4 flex w-full items-center justify-center">
-			<div class="text-2xl font-bold uppercase" (click)="selecionarMesAno()">
+			<div id="select-month-year" class="text-2xl font-bold uppercase">
 				{{ meses[datas_swiper[slide_atual].mes].simplificado }}<span *ngIf="data_hoje.getFullYear() !== datas_swiper[slide_atual].ano">/{{ datas_swiper[slide_atual].ano }}</span>
 			</div>
 
@@ -19,6 +19,12 @@
 </ion-header>
 
 <ion-content>
+	<ion-modal id="modal-calendario-select-month-year" #modal trigger="select-month-year">
+		<ng-template>
+			<app-select-month-year></app-select-month-year>
+		</ng-template>
+	</ion-modal>
+
 	<div class="flex size-full flex-col">
 		<div class="flex size-full flex-col items-center justify-center">
 			<swiper-container class="size-full" [slidesPerView]="1" loop="true">
