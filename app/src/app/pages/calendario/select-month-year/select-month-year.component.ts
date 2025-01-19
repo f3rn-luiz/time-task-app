@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { IonButton, IonButtons, IonContent, IonHeader, IonPicker, IonPickerColumn, IonPickerColumnOption, IonTitle, IonToolbar, ModalController } from '@ionic/angular/standalone';
+import { IonButton, IonButtons, IonFooter, IonHeader, IonPicker, IonPickerColumn, IonPickerColumnOption, IonToolbar, ModalController } from '@ionic/angular/standalone';
 
 @Component({
 	selector: 'app-select-month-year',
 	templateUrl: 'select-month-year.component.html',
 	standalone: true,
-	imports: [IonButton, IonButtons, IonPicker, IonPickerColumn, IonPickerColumnOption, IonTitle, IonContent, IonToolbar, IonHeader, CommonModule],
+	imports: [IonHeader, IonFooter, IonButton, IonButtons, IonPicker, IonPickerColumn, IonPickerColumnOption, IonToolbar, CommonModule],
 })
 export class SelectMonthYearComponent {
 	private data_hoje: Date = new Date();
