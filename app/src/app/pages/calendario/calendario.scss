@@ -19,3 +19,9 @@
 .dia-selecionado {
 	@apply border-zinc-400 dark:border-zinc-500;
 }
+
+ion-modal#modal-calendario-select-month-year {
+	--width: fit-content;
+	--height: fit-content;
+	--border-radius: 12px;
+}
