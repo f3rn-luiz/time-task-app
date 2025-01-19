@@ -39,14 +39,7 @@ export class CalendarioService {
 	];
 
 	constructor() {
-		this.carregarCalendario();
-	}
-
-	carregarCalendario() {
-		this.carregarMes({ mes: this.data_hoje.getMonth() - 1 < 0 ? 11 : this.data_hoje.getMonth() - 1, ano: this.data_hoje.getMonth() - 1 < 0 ? this.data_hoje.getFullYear() - 1 : this.data_hoje.getFullYear() }, true);
-		this.carregarMes({ mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() }, true, true);
-		this.carregarMes({ mes: this.data_hoje.getMonth() + 1 > 11 ? 0 : this.data_hoje.getMonth() + 1, ano: this.data_hoje.getMonth() + 1 > 11 ? this.data_hoje.getFullYear() + 1 : this.data_hoje.getFullYear() }, true);
-		this.datas_loop.next([this.calendario.value![1], this.calendario.value![2], this.calendario.value![0]]);
+		this.carregarPeriodo({ mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() }, 0, true);
 	}
 
 	carregarMes(data: { mes: number; ano: number }, ultimo: boolean, atual: boolean = false) {
@@ -83,6 +76,26 @@ export class CalendarioService {
 			if (ultimo) this.calendario.next([...this.calendario.value, mes]);
 			else this.calendario.next([mes, ...this.calendario.value]);
 		} else this.calendario.next([mes]);
+	}
+
+	carregarPeriodo(data: { mes: number; ano: number }, slide_atual: number = 0, is_hoje: boolean = false) {
+		this.calendario.next([]);
+		if (slide_atual === 0) {
+			this.carregarMes(data, true, is_hoje);
+			this.carregarMes({ mes: data.mes === 11 ? 0 : data.mes + 1, ano: data.mes === 11 ? data.ano + 1 : data.ano }, true);
+			this.carregarMes({ mes: data.mes === 0 ? 11 : data.mes - 1, ano: data.mes === 0 ? data.ano - 1 : data.ano }, true);
+		} else if (slide_atual === 1) {
+			this.carregarMes({ mes: data.mes === 0 ? 11 : data.mes - 1, ano: data.mes === 0 ? data.ano - 1 : data.ano }, true);
+			this.carregarMes(data, true, is_hoje);
+			this.carregarMes({ mes: data.mes === 11 ? 0 : data.mes + 1, ano: data.mes === 11 ? data.ano + 1 : data.ano }, true);
+		} else {
+			this.carregarMes({ mes: data.mes === 11 ? 0 : data.mes + 1, ano: data.mes === 11 ? data.ano + 1 : data.ano }, true);
+			this.carregarMes({ mes: data.mes === 0 ? 11 : data.mes - 1, ano: data.mes === 0 ? data.ano - 1 : data.ano }, true);
+			this.carregarMes(data, true, is_hoje);
+		}
+
+		this.datas_loop.next([this.calendario.value![0], this.calendario.value![1], this.calendario.value![2]]);
+		if (!is_hoje) this.selecionarPrimeiraData(slide_atual);
 	}
 
 	incrementarCalendario(ultimo: boolean) {
