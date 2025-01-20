@@ -21,7 +21,7 @@
 <ion-content>
 	<ion-modal id="modal-calendario-select-month-year" #modal trigger="select-month-year">
 		<ng-template>
-			<app-select-month-year></app-select-month-year>
+			<app-select-month-year (do_select)="selecionarMesAno($event)"></app-select-month-year>
 		</ng-template>
 	</ion-modal>
 
