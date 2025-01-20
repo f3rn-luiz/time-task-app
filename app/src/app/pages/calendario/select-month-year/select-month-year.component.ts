@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { IonButton, IonButtons, IonFooter, IonHeader, IonPicker, IonPickerColumn, IonPickerColumnOption, IonToolbar, ModalController } from '@ionic/angular/standalone';
 
 @Component({
@@ -9,6 +9,8 @@ import { IonButton, IonButtons, IonFooter, IonHeader, IonPicker, IonPickerColumn
 	imports: [IonHeader, IonFooter, IonButton, IonButtons, IonPicker, IonPickerColumn, IonPickerColumnOption, IonToolbar, CommonModule],
 })
 export class SelectMonthYearComponent {
+	@Output() do_select = new EventEmitter<{ mes: number; ano: number }>();
+
 	private data_hoje: Date = new Date();
 	data_selecionada: { mes: number; ano: number } = { mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() };
 
@@ -33,5 +35,9 @@ export class SelectMonthYearComponent {
 	atualizarMes = (mes: any) => (this.data_selecionada.mes = mes);
 	atualizarAno = (ano: any) => (this.data_selecionada.ano = ano);
 	fecharModal = () => this.modalController.dismiss();
-	confirmarSelecao = () => this.modalController.dismiss(this.data_selecionada);
+
+	confirmarSelecao() {
+		this.do_select.emit(this.data_selecionada);
+		this.fecharModal();
+	}
 }
