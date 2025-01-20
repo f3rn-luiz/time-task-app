@@ -5,7 +5,7 @@
 				{{ meses[datas_swiper[slide_atual].mes].simplificado }}<span *ngIf="data_hoje.getFullYear() !== datas_swiper[slide_atual].ano">/{{ datas_swiper[slide_atual].ano }}</span>
 			</div>
 
-			<div class="absolute right-4 flex size-8 items-center justify-center">
+			<div class="absolute right-4 flex size-8 items-center justify-center" (click)="voltarHoje()">
 				<div class="relative flex size-full items-center justify-center">
 					<ion-icon class="size-full" name="calendar-clear-outline" />
 					<div class="absolute top-2 font-semibold">{{ data_simples_hoje.dia }}</div>
