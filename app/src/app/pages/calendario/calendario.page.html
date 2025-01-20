@@ -2,7 +2,7 @@
 	<ion-toolbar>
 		<div class="relative mt-4 flex w-full items-center justify-center">
 			<div id="select-month-year" class="text-2xl font-bold uppercase">
-				{{ meses[datas_swiper[slide_atual].mes].simplificado }}<span *ngIf="data_hoje.getFullYear() !== datas_swiper[slide_atual].ano">/{{ datas_swiper[slide_atual].ano }}</span>
+				{{ meses[datas_swiper[slide_atual].mes].simplificado }}<span *ngIf="data_simples_hoje.ano !== datas_swiper[slide_atual].ano">/{{ datas_swiper[slide_atual].ano }}</span>
 			</div>
 
 			<div class="absolute right-4 flex size-8 items-center justify-center" (click)="voltarHoje()">
