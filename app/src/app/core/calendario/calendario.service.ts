@@ -89,7 +89,7 @@ export class CalendarioService {
 		else if (slide_atual === 1) this.datas_loop.next([this.calendario.value![0], this.calendario.value![1], this.calendario.value![2]]);
 		else this.datas_loop.next([this.calendario.value![2], this.calendario.value![0], this.calendario.value![1]]);
 
-		if (!is_hoje) this.selecionarPrimeiraData(slide_atual);
+		this.selecionarPrimeiraData(slide_atual);
 	}
 
 	incrementarCalendario(ultimo: boolean) {

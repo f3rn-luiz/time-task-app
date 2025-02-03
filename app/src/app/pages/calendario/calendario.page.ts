@@ -45,7 +45,7 @@ export class CalendarioPage implements OnInit {
 		this.iniciarEventosSwiper();
 	}
 
-	voltarHoje = () => this.calendarioService.carregarPeriodo({ mes: this.data_simples_hoje.mes, ano: this.data_simples_hoje.ano }, this.slide_atual);
+	voltarHoje = () => this.calendarioService.carregarPeriodo({ mes: this.data_simples_hoje.mes, ano: this.data_simples_hoje.ano }, this.slide_atual, true);
 	selecionarMesAno = (dados: { mes: number; ano: number }) => this.calendarioService.carregarPeriodo(dados, this.slide_atual);
 
 	atualizarInjecaoDatas(datas: Mes[]) {
