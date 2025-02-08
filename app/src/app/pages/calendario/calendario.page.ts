@@ -49,20 +49,12 @@ export class CalendarioPage implements OnInit {
 	selecionarMesAno = (dados: { mes: number; ano: number }) => this.calendarioService.carregarPeriodo(dados, this.slide_atual);
 
 	atualizarInjecaoDatas(datas: Mes[]) {
-		this.datas_swiper[0].mes = datas[0].mes;
-		this.datas_swiper[0].ano = datas[0].ano;
-		this.datas_swiper[0].dias = datas[0].dias;
-		this.datas_swiper[0].atual = datas[0].atual;
-
-		this.datas_swiper[1].mes = datas[1].mes;
-		this.datas_swiper[1].ano = datas[1].ano;
-		this.datas_swiper[1].dias = datas[1].dias;
-		this.datas_swiper[1].atual = datas[1].atual;
-
-		this.datas_swiper[2].mes = datas[2].mes;
-		this.datas_swiper[2].ano = datas[2].ano;
-		this.datas_swiper[2].dias = datas[2].dias;
-		this.datas_swiper[2].atual = datas[2].atual;
+		for (let idx = 0; idx < 3; idx++) {
+			this.datas_swiper[idx].mes = datas[idx].mes;
+			this.datas_swiper[idx].ano = datas[idx].ano;
+			this.datas_swiper[idx].dias = datas[idx].dias;
+			this.datas_swiper[idx].atual = datas[idx].atual;
+		}
 	}
 
 	iniciarEventosSwiper() {
