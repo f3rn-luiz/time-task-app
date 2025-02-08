@@ -10,7 +10,7 @@ export const routes: Routes = [
 
 			{ path: 'cronograma', loadComponent: () => import('src/app/pages/cronograma/cronograma.page').then((p) => p.CronogramaPage) },
 
-			{ path: 'tarefas', loadComponent: () => import('src/app/pages/tarefas/tarefas.page').then((p) => p.TarefasPage) },
+			{ path: 'tarefas', loadChildren: () => import('src/app/pages/tarefas/tarefas.routes').then((p) => p.TarefasRoutes) },
 
 			{ path: 'configuracao', loadComponent: () => import('src/app/pages/configuracao/configuracao.page').then((p) => p.ConfiguracaoPage) },
 

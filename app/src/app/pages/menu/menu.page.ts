@@ -1,4 +1,4 @@
-import { Component, EnvironmentInjector, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonIcon, IonLabel, IonTabBar, IonTabButton, IonTabs } from '@ionic/angular/standalone';
 
 @Component({
@@ -8,7 +8,5 @@ import { IonIcon, IonLabel, IonTabBar, IonTabButton, IonTabs } from '@ionic/angu
 	imports: [IonLabel, IonIcon, IonTabBar, IonTabButton, IonTabs],
 })
 export class MenuPage {
-	public environmentInjector = inject(EnvironmentInjector);
-
 	constructor() {}
 }
