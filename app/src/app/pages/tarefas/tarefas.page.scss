@@ -1,0 +1,7 @@
+.categoria-tarefas {
+	@apply relative flex w-full items-center justify-center overflow-hidden rounded-lg bg-white p-2 text-lg font-medium dark:bg-zinc-800;
+
+	ion-icon {
+		@apply absolute left-4 size-6;
+	}
+}

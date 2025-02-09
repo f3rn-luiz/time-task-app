@@ -2,3 +2,18 @@
 	For information on how to create your own theme, please see:
 	http://ionicframework.com/docs/theming/
 */
+
+/* IonContent - Tratamento geral para páginas específicas */
+app-tarefas {
+	/* Light theme */
+	ion-content {
+		--background: rgb(228, 228, 231);
+	}
+
+	/* Dark theme */
+	@media (prefers-color-scheme: dark) {
+		ion-content {
+			--background: rgb(0, 0, 0);
+		}
+	}
+}
