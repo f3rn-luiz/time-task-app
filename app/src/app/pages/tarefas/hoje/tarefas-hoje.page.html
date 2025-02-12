@@ -1,7 +1,13 @@
-<ion-header>
-	<ion-toolbar>
-		<ion-title>Hoje</ion-title>
-	</ion-toolbar>
-</ion-header>
+<ion-content>
+	<div class="flex w-full">
+		<div class="ion-activatable ripple-parent rounded-rectangle relative m-2 flex size-12 items-center justify-center overflow-hidden rounded-full" (click)="voltarParaTarefas()">
+			<ion-ripple-effect></ion-ripple-effect>
+			<ion-icon name="chevron-back-outline" class="size-6 text-white" />
+		</div>
+	</div>
 
-<ion-content> </ion-content>
+	<div class="ml-4 flex flex-col text-white">
+		<div class="mt-4 text-2xl font-bold">Hoje</div>
+		<div class="">{{ data_hoje_formatada }}</div>
+	</div>
+</ion-content>
