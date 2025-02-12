@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { IonContent, IonHeader, IonModal, IonToolbar } from '@ionic/angular/standalone';
 import { CalendarioService } from 'src/app/core/calendario/calendario.service';
-import { DataSimples, Dia, DiaSemana, Mes, MesAno } from 'src/app/core/calendario/calendario.type';
+import { DataSimples, Dia, dia_semana, DiaSemana, Mes, MesAno, meses } from 'src/app/core/calendario/calendario.type';
 import { Swiper } from 'swiper/types';
 import { SelectMonthYearComponent } from './select-month-year/select-month-year.component';
 
@@ -15,8 +15,8 @@ import { SelectMonthYearComponent } from './select-month-year/select-month-year.
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CalendarioPage implements OnInit {
-	dias_semana!: DiaSemana[];
-	meses!: MesAno[];
+	dias_semana: DiaSemana[] = dia_semana;
+	meses: MesAno[] = meses;
 
 	private swiper!: Swiper;
 	datas_swiper!: Mes[];
@@ -28,8 +28,6 @@ export class CalendarioPage implements OnInit {
 	data_selecionada!: DataSimples;
 
 	constructor(private calendarioService: CalendarioService) {
-		this.dias_semana = calendarioService.dia_semana;
-		this.meses = calendarioService.meses;
 		calendarioService.datas_loop.subscribe({
 			next: (c) => {
 				if (c) {

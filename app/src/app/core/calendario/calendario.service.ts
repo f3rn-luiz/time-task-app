@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DataSimples, Mes, MesAno } from './calendario.type';
+import { DataSimples, Mes } from './calendario.type';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,31 +12,6 @@ export class CalendarioService {
 	datas_loop: BehaviorSubject<Mes[]> = new BehaviorSubject<Mes[]>([]); // index 0 -> mes atual / index 1 -> proximo mes / index 2 -> mes anterior / (Tudo muda de acordo com o index atual do swiper)
 	data_seletor: BehaviorSubject<Date> = new BehaviorSubject<Date>(this.data_hoje);
 	data_selecionada: BehaviorSubject<DataSimples> = new BehaviorSubject<DataSimples>({ dia: this.data_hoje.getDate(), mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() });
-
-	dia_semana = [
-		{ letra: 'D', simplificado: 'Dom', completo: 'Domingo' },
-		{ letra: 'S', simplificado: 'Seg', completo: 'Segunda-feira' },
-		{ letra: 'T', simplificado: 'Ter', completo: 'Terça-feira' },
-		{ letra: 'Q', simplificado: 'Qua', completo: 'Quarta-feira' },
-		{ letra: 'Q', simplificado: 'Qui', completo: 'Quinta-feira' },
-		{ letra: 'S', simplificado: 'Sex', completo: 'Sexta-feira' },
-		{ letra: 'S', simplificado: 'Sab', completo: 'Sábado' },
-	];
-
-	meses: MesAno[] = [
-		{ simplificado: 'Jan', completo: 'Janeiro' },
-		{ simplificado: 'Fev', completo: 'Fevereiro' },
-		{ simplificado: 'Mar', completo: 'Março' },
-		{ simplificado: 'Abr', completo: 'Abril' },
-		{ simplificado: 'Mai', completo: 'Maio' },
-		{ simplificado: 'Jun', completo: 'Junho' },
-		{ simplificado: 'Jul', completo: 'Julho' },
-		{ simplificado: 'Ago', completo: 'Agosto' },
-		{ simplificado: 'Set', completo: 'Setembro' },
-		{ simplificado: 'Out', completo: 'Outubro' },
-		{ simplificado: 'Nov', completo: 'Novembro' },
-		{ simplificado: 'Dez', completo: 'Dezembro' },
-	];
 
 	constructor() {
 		this.carregarPeriodo({ mes: this.data_hoje.getMonth(), ano: this.data_hoje.getFullYear() }, 0, true);
