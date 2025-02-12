@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonContent, IonHeader, IonIcon, IonRippleEffect, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonIcon, IonRippleEffect, IonTitle, IonToolbar, NavController } from '@ionic/angular/standalone';
 
 @Component({
 	selector: 'app-tarefas',
@@ -9,5 +9,7 @@ import { IonContent, IonHeader, IonIcon, IonRippleEffect, IonTitle, IonToolbar }
 	imports: [IonIcon, IonRippleEffect, IonContent, IonTitle, IonToolbar, IonHeader],
 })
 export class TarefasPage {
-	constructor() {}
+	constructor(private navController: NavController) {}
+
+	irParaTarefa = (rota: string) => this.navController.navigateForward(`tarefas/${rota}`);
 }

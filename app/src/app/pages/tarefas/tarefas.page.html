@@ -6,7 +6,7 @@
 
 <ion-content>
 	<div class="flex w-full flex-col p-2">
-		<div class="categoria-tarefas ion-activatable ripple-parent rounded-rectangle">
+		<div class="categoria-tarefas ion-activatable ripple-parent rounded-rectangle" (click)="irParaTarefa('hoje')">
 			<ion-ripple-effect></ion-ripple-effect>
 			<ion-icon name="sunny-outline" />
 			Hoje
@@ -19,7 +19,7 @@
 		<div class="categoria-tarefas ion-activatable ripple-parent rounded-rectangle mt-2">
 			<ion-ripple-effect></ion-ripple-effect>
 			<ion-icon name="list-outline" />
-			Tarefas
+			Todas
 		</div>
 	</div>
 </ion-content>
